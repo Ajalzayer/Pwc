@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Model Evaluation</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>LLM Model Evaluation</h1>
+        <form id="promptForm">
+            <label for="prompt">Enter your prompt:</label><br>
+            <textarea id="prompt" name="prompt" rows="4" cols="50"></textarea><br>
+            <input type="submit" value="Submit">
+        </form>
+        <div id="response">
+            <h2>Best Response:</h2>
+            <p id="best_response"></p>
+            <h2>All Responses:</h2>
+            <pre id="all_responses"></pre>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script>
+        const socket = io();
+        
+        document.getElementById('promptForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const prompt = document.getElementById('prompt').value;
+            socket.emit('query_llms', { prompt });
+        });
+
+        socket.on('response', function(data) {
+            document.getElementById('best_response').innerText = data.best_response;
+            document.getElementById('all_responses').innerText = JSON.stringify(data.all_responses, null, 2);
+        });
+
+        socket.on('error', function(data) {
+            alert(data.error);
+        });
+    </script>
+</body>
+</html>

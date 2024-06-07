@@ -1,0 +1,12 @@
+flask==2.0.3
+sentence-transformers==2.2.2
+pinecone-client
+openai==0.27.0
+replicate==0.7.0
+Werkzeug==2.0.3
+numpy
+beautifulsoup4
+requests
+setuptools
+urllib3==1.26.5
+scikit-learn
