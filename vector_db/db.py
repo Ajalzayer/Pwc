@@ -9,7 +9,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Define API keys and other constants
-pinecone_api_key = '8d3ee3b5-cfa1-4f73-82c5-45c4833cf93e'
+pinecone_api_key = 'pinecone_api_key'
 index_name = 'website-content-index'
 namespace = 'ns1'
 
