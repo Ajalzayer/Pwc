@@ -12,9 +12,9 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Define API keys
-pinecone_api_key = '8d3ee3b5-cfa1-4f73-82c5-45c4833cf93e'
-openai.api_key = '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'
-replicate_api_token = 'r8_6I9WFvW2YkCDLJhpcGAePJE0Hm36CFk0xR9th'
+pinecone_api_key = 'pinecone_api_key'
+openai.api_key = 'openai.api_key'
+replicate_api_token = 'replicate_api_token'
 
 # Set API keys for services
 os.environ["REPLICATE_API_TOKEN"] = replicate_api_token
